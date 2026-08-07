@@ -1,0 +1,195 @@
+---
+title: "Predictive AI Replication Laboratory"
+subtitle: "ANLY 735 – Research Seminar in Predictive AI"
+author: "Student Name"
+date: today
+format:
+  docx:
+    toc: false
+bibliography: references.bib
+---
+
+# Study
+
+**Article:** [Insert article title]
+
+**Authors:** [Insert author(s)]
+
+**DOI/URL:** [Insert DOI or persistent link]
+
+**Replication Type:** [Direct / Partial / Proxy]
+
+**Repository:** [Insert GitHub repository URL]
+
+# 1. Research Claim
+
+## What result are you attempting to reproduce?
+
+Identify one important empirical or computational claim from the assigned paper.
+
+State:
+
+- the result or finding being examined;
+- the model or analytical approach associated with it;
+- the evaluation metric(s) used by the authors; and
+- why this result is important to the paper's contribution.
+
+Cite the original study.
+
+[Write approximately 100–150 words.]
+
+# 2. Replication Strategy
+
+## How will you investigate the claim?
+
+Identify your replication as:
+
+- **Direct** — using the original data/code;
+- **Partial** — using some original materials; or
+- **Proxy** — using comparable data and methods when original materials are unavailable.
+
+Briefly explain:
+
+- what materials are available;
+- what you will reproduce;
+- what must differ from the original study; and
+- why your approach provides a meaningful test or learning experience.
+
+[Write approximately 100–150 words.]
+
+# 3. Data
+
+Describe the data used for the replication.
+
+Include:
+
+- data source;
+- unit of analysis;
+- target/outcome variable;
+- important predictors/features;
+- sample size, when applicable;
+- preprocessing decisions; and
+- important differences from the original data.
+
+Do not include restricted, confidential, or personally identifiable data in the repository.
+
+[Write approximately 100–150 words.]
+
+# 4. Method
+
+Describe the computational approach used in your replication.
+
+Include, as appropriate:
+
+- model or algorithm;
+- train/test or validation strategy;
+- baseline/comparison model;
+- hyperparameters;
+- preprocessing or feature engineering;
+- random seed; and
+- software/packages used.
+
+The goal is to provide enough information for another researcher to understand how the analysis was conducted.
+
+[Write approximately 150–200 words.]
+
+# 5. Results
+
+Present the main results of your replication.
+
+Include at least one appropriate:
+
+- table,
+- figure, or
+- model-performance summary
+
+generated directly from your analysis when appropriate.
+
+Report the same evaluation metric used by the original authors whenever possible.
+
+Do not simply present output. Explain what the result means.
+
+[Insert results and approximately 100–150 words of interpretation.]
+
+# 6. Compare
+
+## How closely did your results align with the original study?
+
+Compare your result with the authors' reported result.
+
+| Evidence | Original Study | Replication |
+|---|---:|---:|
+| Primary metric | [value] | [value] |
+| Secondary metric, if applicable | [value] | [value] |
+
+Then interpret the comparison.
+
+Consider:
+
+- Was the result reproduced?
+- Was the direction of the finding consistent?
+- Was model performance similar?
+- What might explain differences?
+
+For proxy replications, focus on whether the analytical pattern or methodological insight was reproduced rather than expecting identical numerical results.
+
+[Write approximately 150–200 words.]
+
+# 7. Reproducibility Check
+
+Evaluate the reproducibility of the original study and your own analysis.
+
+Complete the following:
+
+- [ ] Data source documented
+- [ ] Code runs from beginning to end
+- [ ] Random seed documented when applicable
+- [ ] Software/packages identified
+- [ ] Key preprocessing steps documented
+- [ ] Evaluation procedure documented
+- [ ] Repository README provides instructions
+
+Then answer:
+
+**What was the greatest reproducibility challenge you encountered?**
+
+[Write approximately 75–100 words.]
+
+# 8. Extend
+
+## What did the replication reveal that you would investigate next?
+
+Propose **one** meaningful extension.
+
+Examples might include:
+
+- testing another model;
+- adding a stronger baseline;
+- evaluating another population or dataset;
+- examining temporal generalization;
+- testing fairness across groups;
+- evaluating model calibration;
+- examining interpretability; or
+- testing robustness under changing conditions.
+
+Explain why the extension would add knowledge rather than merely add complexity.
+
+[Write approximately 100–150 words.]
+
+# Replication Verdict
+
+Select the statement that best represents your findings:
+
+- [ ] **Reproduced** — The central result was substantially reproduced.
+- [ ] **Partially Reproduced** — Some findings were reproduced, but meaningful differences remain.
+- [ ] **Not Reproduced** — The central result was not reproduced.
+- [ ] **Not Directly Comparable** — A proxy replication produced useful methodological insight, but numerical comparison is not appropriate.
+
+In **2–3 sentences**, defend your verdict.
+
+[Write here.]
+
+# References
+
+::: {#refs}
+:::
