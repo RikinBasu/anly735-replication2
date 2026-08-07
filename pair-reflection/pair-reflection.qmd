@@ -1,0 +1,117 @@
+---
+title: "PAIR Scholarly Reflection"
+subtitle: "ANLY 735 – Research Seminar in Predictive AI"
+author: "Student Name"
+date: today
+format:
+  docx:
+    toc: false
+bibliography: references.bib
+---
+
+# Paper
+
+**Article:** [Insert article title]
+
+**Authors:** [Insert author(s)]
+
+**Publication:** [Journal or preprint venue]
+
+**DOI/URL:** [Insert DOI or persistent link]
+
+# P — Position
+
+## What is the paper trying to establish?
+
+State the central research problem, purpose, or argument of the paper in your own words.
+
+Identify:
+
+- the research question or objective;
+- why the problem matters;
+- the authors' central claim or contribution; and
+- how the study relates to Predictive AI.
+
+**Your reflection:**
+
+[Write approximately 150–200 words.]
+
+# A — Analyze
+
+## How convincing is the evidence?
+
+Critically examine how the authors investigated the problem.
+
+Consider:
+
+- data and sample;
+- variables or features;
+- predictive method/model;
+- baseline or comparison models;
+- training and validation strategy;
+- evaluation metrics;
+- reproducibility; and
+- whether the evidence supports the authors' conclusions.
+
+Do not simply describe the methodology. Evaluate the choices the researchers made.
+
+**Your reflection:**
+
+[Write approximately 200–250 words.]
+
+# I — Interrogate
+
+## What should a critical data scientist question?
+
+Identify the most important limitation, assumption, uncertainty, or unresolved issue in the study.
+
+Consider:
+
+- data quality or representativeness;
+- leakage;
+- overfitting;
+- generalizability;
+- model assumptions;
+- fairness or bias;
+- interpretability;
+- ethical implications;
+- missing comparisons; and
+- claims that may extend beyond the evidence.
+
+Explain **why your concern matters** for interpreting or applying the findings.
+
+**Your reflection:**
+
+[Write approximately 150–200 words.]
+
+# R — Reimagine
+
+## How would you extend or improve the research?
+
+Think like the researcher conducting the next study.
+
+Propose one meaningful extension, replication, or improvement.
+
+Explain:
+
+- what you would change;
+- why you would change it;
+- what data or method you might use; and
+- what new knowledge the study could produce.
+
+Where appropriate, connect your idea to your developing Predictive AI research interests.
+
+**Your reflection:**
+
+[Write approximately 150–200 words.]
+
+# Researcher Takeaway
+
+In **2–3 sentences**, state the most important lesson this paper offers you as a developing Predictive AI researcher.
+
+[Write here.]
+
+# References
+
+::: {#refs}
+:::
