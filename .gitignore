@@ -1,0 +1,15 @@
+# Quarto generated files
+/.quarto/
+
+# R project files
+.Rproj.user/
+.Rhistory
+.RData
+.Ruserdata
+
+# Operating system files
+.DS_Store
+Thumbs.db
+
+# Temporary files
+~$*
