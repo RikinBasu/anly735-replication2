@@ -19,6 +19,12 @@ bibliography: references.bib
 
 **Replication Type:** [Direct / Partial / Proxy]
 
+**Computational Environment:** [R / Python]
+
+**Primary Packages:** [List major packages]
+
+**Random Seed:** [Insert seed, if applicable]
+
 **Repository:** [Insert GitHub repository URL]
 
 # 1. Research Claim
@@ -139,17 +145,15 @@ For proxy replications, focus on whether the analytical pattern or methodologica
 
 Evaluate the reproducibility of the original study and your own analysis.
 
-Complete the following:
-
 - [ ] Data source documented
 - [ ] Code runs from beginning to end
+- [ ] Computational environment identified
+- [ ] Software/packages documented
+- [ ] Package versions documented when relevant
 - [ ] Random seed documented when applicable
-- [ ] Software/packages identified
 - [ ] Key preprocessing steps documented
 - [ ] Evaluation procedure documented
-- [ ] Repository README provides instructions
-
-Then answer:
+- [ ] Repository README provides reproduction instructions
 
 **What was the greatest reproducibility challenge you encountered?**
 
