@@ -1,0 +1,9 @@
+ANLY 735 Replication Laboratory #2
+Computational Environment
+
+Python: 3.14.7
+Operating System: Windows-11-10.0.26200-SP0
+NumPy: 2.5.3
+pandas: 3.0.5
+scikit-learn: 1.9.1
+matplotlib: 3.11.2

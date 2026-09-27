@@ -1,0 +1,25 @@
+{
+    "dataset": "sklearn.datasets.load_digits",
+    "replication_type": "Proxy",
+    "model_seeds": [
+        42,
+        43,
+        44,
+        45,
+        46
+    ],
+    "split_seed": 2026,
+    "permutation_seed": 735,
+    "test_size": 0.25,
+    "phase_a_epochs": 40,
+    "phase_b_epochs": 30,
+    "early_rate_epochs": 5,
+    "recovery_threshold": 0.9,
+    "hidden_units": 64,
+    "activation": "relu",
+    "optimizer": "SGD",
+    "learning_rate": 0.05,
+    "batch_size": 64,
+    "alpha": 0.0001,
+    "momentum": 0.0
+}
