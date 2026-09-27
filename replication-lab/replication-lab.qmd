@@ -11,21 +11,21 @@ bibliography: references.bib
 
 # Study
 
-**Article:** [Insert article title]
+**Article:** Plasticity Loss in Deep Reinforcement Learning: A Survey
 
-**Authors:** [Insert author(s)]
+**Authors:** Timo Klein, Christoph Luther, Manus McAuliffe, Lukas Miklautz, Claudia Plant, and Sebastian Tschiatschek
 
-**DOI/URL:** [Insert DOI or persistent link]
+**DOI/URL:** https://arxiv.org/abs/2411.04832
 
-**Replication Type:** [Direct / Partial / Proxy]
+**Replication Type:** Proxy
 
-**Computational Environment:** [R / Python]
+**Computational Environment:** Python
 
-**Primary Packages:** [List major packages]
+**Primary Packages:** NumPy, pandas, scikit-learn, Matplotlib
 
-**Random Seed:** [Insert seed, if applicable]
+**Random Seed:** Model seeds = 42, 43, 44, 45, 46; train/test split seed = 2026; pixel-permutation seed = 735
 
-**Repository:** [Insert GitHub repository URL]
+**Repository:** https://github.com/RikinBasu/anly735-replication2.git
 
 # 1. Research Claim
 
@@ -42,7 +42,7 @@ State:
 
 Cite the original study.
 
-[Write approximately 100–150 words.]
+Klein et al. (2026) examine the claim that neural networks can lose plasticity, meaning that prior training may reduce their ability to adapt effectively when the data distribution or learning target changes. Their analytical framework compares the performance of a previously trained network on a later task with the performance of a freshly initialized network trained on that same task. Rather than relying on the immediate performance drop caused by a change, their definition focuses on how well the network can fit the new task after additional optimization. The key evaluation quantity is therefore the difference in final-task loss or performance between the previously trained and fresh models. This result is important because it provides a unified way to define and study plasticity loss across nonstationary learning settings and motivates experiments that examine whether learning capacity is maintained after conditions change.
 
 # 2. Replication Strategy
 
@@ -63,6 +63,8 @@ Briefly explain:
 
 [Write approximately 100–150 words.]
 
+This study uses a proxy replication because Klein et al. (2026) is a survey rather than a primary empirical study with one original dataset, model, and codebase to reproduce. The available materials include the survey’s definition and discussion of plasticity loss, including comparisons between previously trained and freshly initialized networks under changing conditions.     2411.04832v3 The replication therefore tests the broader phenomenon rather than attempting to match a reported numerical result. A small neural-network classifier is trained on the scikit-learn Digits dataset, then exposed to a fixed pixel-permutation shift. Its post-change learning trajectory is compared with a freshly initialized model trained under the same new condition. This differs from the deep reinforcement-learning settings reviewed by Klein et al., but provides a controlled way to test whether prior training affects subsequent learning capacity.
+
 # 3. Data
 
 Describe the data used for the replication.
@@ -80,6 +82,8 @@ Include:
 Do not include restricted, confidential, or personally identifiable data in the repository.
 
 [Write approximately 100–150 words.]
+
+he proxy replication uses the scikit-learn Digits dataset, which contains 1,797 handwritten digit images. Each observation is one 8 × 8 grayscale image represented by 64 pixel-value features, and the target variable is the digit class from 0 through 9. The data were divided into 75% training and 25% testing sets using stratified sampling so that class proportions were preserved. Pixel values, originally ranging from 0 to 16, were scaled to approximately 0–1 by dividing by 16. To create the nonstationary Condition B, the same fixed permutation was applied to all 64 pixel positions while keeping the class labels unchanged. Unlike the deep reinforcement-learning environments emphasized by Klein et al., this experiment uses a small supervised image-classification dataset with an artificially introduced input-distribution shift.
 
 # 4. Method
 
@@ -99,6 +103,8 @@ The goal is to provide enough information for another researcher to understand h
 
 [Write approximately 150–200 words.]
 
+The experiment used a feed-forward neural network implemented with scikit-learn’s MLPClassifier. The network contained one hidden layer with 64 ReLU units and was trained with stochastic gradient descent using a learning rate of 0.05, batch size of 64, L2 regularization (alpha = 0.0001), and zero momentum. The Digits data were divided into 75% training and 25% testing sets using stratified sampling with split seed 2026. The warm model was first trained for 40 epochs on the original images (Condition A). A fixed pixel permutation generated Condition B, after which the same model continued training for 30 additional epochs. A freshly initialized model with the same architecture and hyperparameters was trained on Condition B as the comparison baseline. Both models received the same Condition B examples in the same order. The experiment was repeated using model seeds 42–46, while the pixel permutation remained fixed with seed 735. Post-change accuracy was recorded after each epoch. Python was used with NumPy, pandas, scikit-learn, and Matplotlib.
+
 # 5. Results
 
 Present the main results of your replication.
@@ -116,6 +122,19 @@ Report the same evaluation metric used by the original authors whenever possible
 Do not simply present output. Explain what the result means.
 
 [Insert results and approximately 100–150 words of interpretation.]
+
+![Condition B learning trajectories for the warm and fresh models. Lines show mean accuracy across five random seeds.]
+(figures/lab02_condition_b_learning.png){width=85%}
+
+| Measure | Warm Model | Fresh Model |
+|---|---:|---:|
+| Condition B accuracy at epoch 5 | 78.62% | 80.22% |
+| Early learning slope | 0.1115 | 0.1016 |
+| Epochs to 90% accuracy | 13.0 | 11.2 |
+| Mean Condition B accuracy | 85.72% | 86.28% |
+| Final Condition B accuracy | 93.24% | 92.89% |
+
+Before the change, the warm model averaged 93.91% accuracy on Condition A. Its accuracy on Condition B immediately after the pixel permutation fell to 7.60%, confirming that the distribution shift was substantial. However, this drop alone does not indicate plasticity loss. During subsequent training, both models learned Condition B successfully. The fresh model reached 90% accuracy somewhat sooner (11.2 versus 13.0 epochs) and had slightly higher mean post-change accuracy (86.28% versus 85.72%). In contrast, the warm model had a slightly steeper early learning slope and slightly higher final accuracy (93.24% versus 92.89%). Overall, the post-change trajectories were very similar, providing little evidence that prior training substantially reduced the warm model’s capacity to learn the changed condition.
 
 # 6. Compare
 
