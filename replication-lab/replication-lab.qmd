@@ -42,7 +42,7 @@ State:
 
 Cite the original study.
 
-Klein et al. (2026) examine the claim that neural networks can lose plasticity, meaning that prior training may reduce their ability to adapt effectively when the data distribution or learning target changes. Their analytical framework compares the performance of a previously trained network on a later task with the performance of a freshly initialized network trained on that same task. Rather than relying on the immediate performance drop caused by a change, their definition focuses on how well the network can fit the new task after additional optimization. The key evaluation quantity is therefore the difference in final-task loss or performance between the previously trained and fresh models. This result is important because it provides a unified way to define and study plasticity loss across nonstationary learning settings and motivates experiments that examine whether learning capacity is maintained after conditions change.
+Klein et al. (2026) examine the claim that neural networks can lose plasticity, meaning that prior training may reduce their ability to adapt effectively when the data distribution or learning target changes[@klein2026plasticity]. Their analytical framework compares the performance of a previously trained network on a later task with the performance of a freshly initialized network trained on that same task. Rather than relying on the immediate performance drop caused by a change, their definition focuses on how well the network can fit the new task after additional optimization. The key evaluation quantity is therefore the difference in final-task loss or performance between the previously trained and fresh models. This result is important because it provides a unified way to define and study plasticity loss across nonstationary learning settings and motivates experiments that examine whether learning capacity is maintained after conditions change.
 
 # 2. Replication Strategy
 
@@ -63,7 +63,7 @@ Briefly explain:
 
 [Write approximately 100–150 words.]
 
-This study uses a proxy replication because Klein et al. (2026) is a survey rather than a primary empirical study with one original dataset, model, and codebase to reproduce. The available materials include the survey’s definition and discussion of plasticity loss, including comparisons between previously trained and freshly initialized networks under changing conditions.     2411.04832v3 The replication therefore tests the broader phenomenon rather than attempting to match a reported numerical result. A small neural-network classifier is trained on the scikit-learn Digits dataset, then exposed to a fixed pixel-permutation shift. Its post-change learning trajectory is compared with a freshly initialized model trained under the same new condition. This differs from the deep reinforcement-learning settings reviewed by Klein et al., but provides a controlled way to test whether prior training affects subsequent learning capacity.
+This study uses a proxy replication because Klein et al. (2026) is a survey rather than a primary empirical study with one original dataset, model, and codebase to reproduce[@klein2026plasticity]. The available materials include the survey’s definition and discussion of plasticity loss, including comparisons between previously trained and freshly initialized networks under changing conditions. The replication therefore tests the broader phenomenon rather than attempting to match a reported numerical result. A small neural-network classifier is trained on the scikit-learn Digits dataset, then exposed to a fixed pixel-permutation shift. Its post-change learning trajectory is compared with a freshly initialized model trained under the same new condition. This differs from the deep reinforcement-learning settings reviewed by Klein et al., but provides a controlled way to test whether prior training affects subsequent learning capacity[@klein2026plasticity].
 
 # 3. Data
 
@@ -83,7 +83,7 @@ Do not include restricted, confidential, or personally identifiable data in the 
 
 [Write approximately 100–150 words.]
 
-he proxy replication uses the scikit-learn Digits dataset, which contains 1,797 handwritten digit images. Each observation is one 8 × 8 grayscale image represented by 64 pixel-value features, and the target variable is the digit class from 0 through 9. The data were divided into 75% training and 25% testing sets using stratified sampling so that class proportions were preserved. Pixel values, originally ranging from 0 to 16, were scaled to approximately 0–1 by dividing by 16. To create the nonstationary Condition B, the same fixed permutation was applied to all 64 pixel positions while keeping the class labels unchanged. Unlike the deep reinforcement-learning environments emphasized by Klein et al., this experiment uses a small supervised image-classification dataset with an artificially introduced input-distribution shift.
+he proxy replication uses the scikit-learn Digits dataset, which contains 1,797 handwritten digit images. Each observation is one 8 × 8 grayscale image represented by 64 pixel-value features, and the target variable is the digit class from 0 through 9. The data were divided into 75% training and 25% testing sets using stratified sampling so that class proportions were preserved. Pixel values, originally ranging from 0 to 16, were scaled to approximately 0–1 by dividing by 16. To create the nonstationary Condition B, the same fixed permutation was applied to all 64 pixel positions while keeping the class labels unchanged. Unlike the deep reinforcement-learning environments emphasized by Klein et al., this experiment uses a small supervised image-classification dataset with an artificially introduced input-distribution shift[@klein2026plasticity].
 
 # 4. Method
 
@@ -160,6 +160,15 @@ For proxy replications, focus on whether the analytical pattern or methodologica
 
 [Write approximately 150–200 words.]
 
+
+| Evidence | Original Study | Replication |
+|---|---|---|
+| Post-change learning capacity | Previously trained networks may show reduced ability to fit a new task relative to a fresh model | Warm final accuracy = 93.24%; Fresh final accuracy = 92.89% |
+| Adaptation rate | Reduced plasticity may appear as less effective subsequent learning | Warm reached 90% in 13.0 epochs; Fresh reached 90% in 11.2 epochs |
+
+The replication partially aligned with the broader pattern described by Klein et al. The large performance drop immediately after the input shift confirmed that the new condition was substantially different, but the important evidence came from subsequent learning. The fresh model reached 90% Condition B accuracy faster than the warm model, suggesting a small disadvantage in adaptation speed for the previously trained network. However, the warm model had a slightly higher early learning slope and slightly higher final accuracy, so the evidence did not show a clear or sustained loss of learning capacity. At the same time, the warm model’s original-condition accuracy declined from 93.91% to 71.96% while learning Condition B, showing a tradeoff between retaining prior capability and adapting to the changed condition. Therefore, the proxy experiment reproduced part of the broader stability–plasticity pattern, but not strong evidence of substantial plasticity loss.
+
+
 # 7. Reproducibility Check
 
 Evaluate the reproducibility of the original study and your own analysis.
@@ -177,6 +186,20 @@ Evaluate the reproducibility of the original study and your own analysis.
 **What was the greatest reproducibility challenge you encountered?**
 
 [Write approximately 75–100 words.]
+
+- [x] Data source documented
+- [x] Code runs from beginning to end
+- [x] Computational environment identified
+- [x] Software/packages documented
+- [x] Package versions documented when relevant
+- [x] Random seed documented when applicable
+- [x] Key preprocessing steps documented
+- [x] Evaluation procedure documented
+- [x] Repository README provides reproduction instructions
+
+**What was the greatest reproducibility challenge you encountered?**
+
+The greatest reproducibility challenge was translating the broad plasticity-loss phenomenon discussed in a survey into a controlled computational experiment. Klein et al. do not provide one original experiment, dataset,[@klein2026plasticity] or codebase to reproduce directly, so several design decisions had to be made transparently. These included choosing a public dataset, defining a nonstationary input shift, creating comparable warm and fresh models, and fixing the data split, pixel permutation, and random seeds. Recording these choices and saving the computational environment was important so that another researcher could reproduce the same experimental conditions.
 
 # 8. Extend
 
@@ -199,18 +222,21 @@ Explain why the extension would add knowledge rather than merely add complexity.
 
 [Write approximately 100–150 words.]
 
+A useful extension would be to expose the warm model to several sequential input-distribution changes instead of only one fixed pixel permutation. After learning each new condition, the model could be compared with a freshly initialized model trained on the same condition. This would show whether the ability to adapt stays stable across repeated changes or gradually declines with continued training. The extension would add knowledge because our current experiment showed that the warm model could successfully learn one new condition, so a single shift may not be strong enough to reveal cumulative plasticity loss. Klein et al. note that longer training and repeated nonstationary learning can reduce later adaptability, making repeated changes a meaningful test of whether learning capacity deteriorates over time.
+
+
 # Replication Verdict
 
 Select the statement that best represents your findings:
 
 - [ ] **Reproduced** — The central result was substantially reproduced.
-- [ ] **Partially Reproduced** — Some findings were reproduced, but meaningful differences remain.
+- [x] **Partially Reproduced** — Some findings were reproduced, but meaningful differences remain.
 - [ ] **Not Reproduced** — The central result was not reproduced.
 - [ ] **Not Directly Comparable** — A proxy replication produced useful methodological insight, but numerical comparison is not appropriate.
 
 In **2–3 sentences**, defend your verdict.
 
-[Write here.]
+The proxy experiment partially reproduced the broader stability–plasticity pattern described by Klein et al. The warm model experienced a large disruption and some loss of its original-condition performance, but its post-change learning was broadly similar to the fresh model, so the experiment did not show clear evidence of substantial plasticity loss.
 
 # References
 
