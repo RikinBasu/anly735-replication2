@@ -1,8 +1,8 @@
 ---
 title: "Predictive AI Replication Laboratory"
 subtitle: "ANLY 735 – Research Seminar in Predictive AI"
-author: "Student Name"
-date: today
+author: "Rikin Basu"
+date: 09-27-2026
 format:
   docx:
     toc: false
